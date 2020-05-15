@@ -17,6 +17,7 @@ class Flight
         time_t arivaltime;
     // 
         Airport departure; // departure destination
+        
         Airport arrival;   // arrival destination
         string flightName; // VJ-696
         
@@ -47,7 +48,7 @@ class Flight
         void setCurBusinessSeat(int num);
         void setCurEcoSeat(int num); 
         void setCurFirstSeat(int num);
-        
+
         ~Flight();
 
 

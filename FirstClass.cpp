@@ -15,5 +15,5 @@ FirstClass::FirstClass(Flight aFlight, string aName, string aDOB, string aSeatNu
 
 int FirstClass::priceCalculation()
 {
-    return flight.getPrice()*COEF
+    return flight.getDistance()*COEF;
 }
