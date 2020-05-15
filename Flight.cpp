@@ -5,7 +5,7 @@ using namespace std;
 #include "Flight.h"
 #include "Airport.h"
 
-totalFlightID = 0;
+int Flight::totalFlightID = 0;
 
 Flight::Flight()
 {
@@ -17,9 +17,7 @@ Flight::Flight()
     flightName = "";
     basePrice = 0;
 
-    totalFlightID++;
-
-    flightID = totalFlightID;
+    flightID = totalFlightID++;
     curBusinessSeat = 0;
     curEcoSeat = 0;
     curFirstSeat = 0;
@@ -35,9 +33,7 @@ Flight::Flight(string aName, Airport* aDeparture, Airport* aArrival, int aBasePr
     flightName = aName;
     basePrice = aBasePrice;
 
-    totalFlightID++;
-
-    flightID = totalFlightID;
+    flightID = totalFlightID++;
     curBusinessSeat = 0;
     curEcoSeat = 0;
     curFirstSeat = 0;
@@ -76,7 +72,7 @@ int Flight::getID()
 
 int Flight::getCurBusinessSeat()
 {
-    return curBusinesSeat;
+    return curBusinessSeat;
 }
 
 int Flight::getCurEcoSeat()

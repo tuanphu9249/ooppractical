@@ -1,6 +1,8 @@
 #ifndef AIRPORT_H
 #define AIRPORT_H
 #include <iostream>
+#include "Flight.h"
+
 using namespace std;
 
 

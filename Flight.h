@@ -4,10 +4,10 @@
 #define BUSINESS_MAX 10;
 #define ECO_MAX 100;
 #include <iostream>
-#include "Airport.h"
 #include <ctime>
 using namespace std;
 
+class Airport;  // foward declarations to avoid dependency loop
 
 class Flight
 {
