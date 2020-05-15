@@ -22,4 +22,6 @@ class AirControl
 
 
         ~AirControl();
-}
+};
+
+#endif
