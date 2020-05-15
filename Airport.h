@@ -8,7 +8,7 @@ class Airport
 {
     private:
         string name;
-        FlightType* flights;
+        Flight* flights;
         int numFlights;
 
     public:

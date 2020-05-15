@@ -2,9 +2,9 @@
 #define BUSINESS_H
 #include <iostream>
 using namespace std;
-#include "FlightType.h"
+#include "Flight.h"
 
-class Business : public FlightType
+class Business : public Flight
 {
     public:
         virtual int priceCalculation(Airport departure, Airport arrival);

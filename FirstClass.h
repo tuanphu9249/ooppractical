@@ -2,9 +2,9 @@
 #define FIRSTCLASS_H
 #include <iostream>
 using namespace std;
-#include "FlightType.h"
+#include "Flight.h"
 
-class FirstClass : public FlightType
+class FirstClass : public Flight
 {
     public:
         virtual int priceCalculation(Airport departure, Airport arrival);
