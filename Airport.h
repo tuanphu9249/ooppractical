@@ -9,7 +9,7 @@ class Airport
 {
     private:
         string name;
-        vector<Flight> flights;
+        Flight* flights;
         int numFlights;
 
     public:
@@ -18,7 +18,7 @@ class Airport
         void setName(string name);
 
         string getName();
-        vector<Flight>* getFlights();
+        Flight* getFlights();
         int getNumFlights();
 
 
