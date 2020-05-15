@@ -10,16 +10,18 @@ using namespace std;
 class AirControl
 {
     private:
-        Airport[] airports;
+        Airport* airports;
         int numAirports;
 
     public:
         AirControl();
 
-        FlightType[] flightCheck(string arrival, string destination); // show flight ID, name, # of passengers,
+        FlightType* flightCheck(string arrival, string destination); // show flight ID, name, # of passengers,
                                                                     // price, speed, time of all flights available
         bool buyTicket(string arrival, string destination);         
 
 
         ~AirControl();
-}
+};
+
+#endif
