@@ -8,7 +8,6 @@ class FirstClass : public Flight
 {
     public:
         virtual int priceCalculation(Airport departure, Airport arrival);
-        virtual int speedCalculation(Airport departure, Airport arrival);
 
 }
 
