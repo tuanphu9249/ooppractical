@@ -16,14 +16,8 @@ class Flight
         time_t departureTime;
         time_t arrivalTime;
     // 
-<<<<<<< HEAD
-        Airport departure; // departure destination
-        
-        Airport arrival;   // arrival destination
-=======
         Airport* departure; // departure destination
         Airport* arrival;   // arrival destination
->>>>>>> 74b3a9be855d958bc38aadb6533d53729b5cd51a
         string flightName; // VJ-696
         
         int basePrice;

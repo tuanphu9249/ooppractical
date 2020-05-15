@@ -7,7 +7,7 @@ using namespace std;
 class Ticket
 {
     private:
-        Flight flight;
+        Flight* flight;
         string name;
         string DOB;
         string seatNumber;
@@ -16,18 +16,18 @@ class Ticket
     public:
         Ticket();
         Ticket(Flight* aFlight, string aName, string aDOB, string aSeatNumber);
-        virtual int priceCalculation(Airport departure, Airport arrival) = 0;
+        virtual int priceCalculation();
 
-        Flight getFlight();
+        Flight* getFlight();
         string getName();
         string getDOB();
         string getSeatNumber();        
         int getPrice();
 
-        void setFlight();
-        void setName();
-        void setDOB();
-        void setSeatNumber();
+        void setFlight(Flight* aFlight);
+        void setName(string aName);
+        void setDOB(string aDOB);
+        void setSeatNumber(string aSeatNumber);
         
 
         ~Ticket();

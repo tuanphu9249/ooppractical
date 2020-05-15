@@ -15,5 +15,5 @@ Economy::Economy(Flight aFlight, string aName, string aDOB, string aSeatNumber) 
 
 int Economy::priceCalculation()
 {
-    return flight.getDistance()*COEF;
+    return flight.getBasePrice()*COEF;
 }
