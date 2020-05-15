@@ -1,6 +1,7 @@
 #ifndef AIRPORT_H
 #define AIRPORT_H
 #include <iostream>
+#include<vector>
 using namespace std;
 
 
@@ -8,17 +9,18 @@ class Airport
 {
     private:
         string name;
-        Flight* flights;
+        vector<Flight> flights;
         int numFlights;
 
     public:
         Airport(string name);
-        void addFlight(string departure, string arrival);
+        void addFlight(Flight aFlight);
         void setName(string name);
 
         string getName();
-        string* getFlights();
+        vector<Flight>* getFlights();
         int getNumFlights();
+
 
         ~Airport();
 

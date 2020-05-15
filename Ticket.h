@@ -11,23 +11,26 @@ class Ticket
         string name;
         string DOB;
         string seatNumber;
+        string type;
 
     public:
         Ticket();
-        Ticket(Flight aFlight, string name, string DOB, string seatNumber);
+        Ticket(Flight aFlight, string aName, string aDOB, string aSeatNumber);
+        virtual int priceCalculation(Airport departure, Airport arrival) = 0;
+
         Flight getFlight();
         string getName();
         string getDOB();
-        string getSeatNumber();
+        string getSeatNumber();        
+        int getPrice();
 
         void setFlight();
         void setName();
         void setDOB();
         void setSeatNumber();
+        
 
         ~Ticket();
-
-
 
 
 };

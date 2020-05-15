@@ -28,7 +28,6 @@ class Flight
 
     public:
         Flight(string name, Airport departure, Airport arrival);
-        virtual int priceCalculation(Airport departure, Airport arrival) = 0;
 
         string getName();        
         time_t getDepartureTime();

@@ -2,12 +2,13 @@
 #define ECONOMY_H
 #include <iostream>
 using namespace std;
-#include "Flight.h"
+#include "Ticket.h"
 
-class Economy : public Flight
+class Economy : public Ticket
 {
     public:
-        virtual int priceCalculation(Airport departure, Airport arrival);
+        Economy(Flight aFlight, string aName, string aDOB, string aSeatNumber);
+        virtual int priceCalculation();
 
 };
 
