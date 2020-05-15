@@ -12,7 +12,7 @@ class Ticket
         string DOB;
         string seatNumber;
         string type;
-
+        int price
     public:
         Ticket();
         Ticket(Flight* aFlight, string aName, string aDOB, string aSeatNumber);

@@ -48,8 +48,9 @@ class Flight
         void setDeparture(Airport aDeparture);
         void setArrival(Airport aArrival);
         void setCurBusinessSeat(int num);
-        void setCurEcoSeat(int num);
+        void setCurEcoSeat(int num); 
         void setCurFirstSeat(int num);
+        
         ~Flight();
 
 
