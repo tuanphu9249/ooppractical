@@ -15,5 +15,5 @@ Business::Business(Flight aFlight, string aName, string aDOB, string aSeatNumber
 
 int Business::priceCalculation()
 {
-    return flight.getPrice()*COEF
+    return flight.getBasePrice()*COEF;
 }

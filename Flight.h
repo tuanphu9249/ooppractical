@@ -50,7 +50,7 @@ class Flight
         void setCurBusinessSeat(int num);
         void setCurEcoSeat(int num); 
         void setCurFirstSeat(int num);
-        
+
         ~Flight();
 
 
