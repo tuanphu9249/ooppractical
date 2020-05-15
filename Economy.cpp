@@ -1,19 +1,19 @@
 #include<iostream>
-#include "FirstClass.h"
+#include "Economy.h"
 #include "Flight.h"
 #include "Ticket.h"
-#define COEF 10;
+#define COEF 1; // coeffiecient for this flight type
 
-FirstClass::FirstClass(Flight aFlight, string aName, string aDOB, string aSeatNumber) : Ticket(aFight,name,DOB,seatNumber)
+Economy::Economy(Flight aFlight, string aName, string aDOB, string aSeatNumber) : Ticket(aFlight, aName, aDOB, aSeatNumber)
 {
     flight = aFlight;
     name = aName;
     DOB = aDOB;
     SeatNumber = aSeatNumber;
-    type = "First Class";
+    type = "Economy";
 }
 
-int FirstClass::priceCalculation()
+int Economy::priceCalculation()
 {
-    return 
+    return flight.getPrice()*COEF
 }

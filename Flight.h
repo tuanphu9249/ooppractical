@@ -20,6 +20,7 @@ class Flight
         Airport arrival;   // arrival destination
         string flightName; // VJ-696
         
+        int price;
         int flighID;        // ID of flight
         static int totalFlightID; // increase whenever instantiate a new flight 
         int curBusinesSeat = 0;
@@ -27,7 +28,7 @@ class Flight
         int curFirstSeat = 0;
 
     public:
-        Flight(string name, Airport departure, Airport arrival);
+        Flight(string name, Airport departure, Airport arrival, int aPrice, time_t deptime, time_t arritime);
 
         string getName();        
         time_t getDepartureTime();
@@ -37,7 +38,8 @@ class Flight
         int getID();
         int getCurBusinessSeat();
         int getCurEcoSeat();
-        int getCurFirstSeat();        
+        int getCurFirstSeat();  
+        int getPrice()      
 
         void setName(string name);
         void setDepartureTime(time_t aDeparturetime);

@@ -7,8 +7,8 @@ using namespace std;
 class Business : public Ticket
 {
     public:
+        Business(Flight aFlight, string aName, string aDOB, string aSeatNumber);
         virtual int priceCalculation();
-
 
 };
 #endif

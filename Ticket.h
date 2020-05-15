@@ -15,7 +15,7 @@ class Ticket
 
     public:
         Ticket();
-        Ticket(Flight aFlight, string aName, string aDOB, string aSeatNumber);
+        Ticket(Flight* aFlight, string aName, string aDOB, string aSeatNumber);
         virtual int priceCalculation(Airport departure, Airport arrival) = 0;
 
         Flight getFlight();
