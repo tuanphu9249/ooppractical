@@ -45,9 +45,9 @@ class Flight
         void setArrivalTime(time_t aArrivaltime);
         void setDeparture(Airport aDeparture);
         void setArrival(Airport aArrival);
-        int setCurBusinessSeat(int num);
-        int setCurEcoSeat(int num);
-        int setCurFirstSeat(int num);
+        void setCurBusinessSeat(int num);
+        void setCurEcoSeat(int num);
+        void setCurFirstSeat(int num);
         ~Flight();
 
 
