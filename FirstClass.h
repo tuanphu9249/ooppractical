@@ -11,3 +11,5 @@ class FirstClass : public FlightType
         virtual int speedCalculation(Airport departure, Airport arrival);
 
 }
+
+#endif
