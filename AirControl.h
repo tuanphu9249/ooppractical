@@ -11,7 +11,9 @@ class AirControl
 {
     private:
         Airport* airports;
-        static int numAirports;
+        Flight* flights;
+        int numAirports;
+        int numFlights;
         int[50][50] costs;
     public:
         AirControl();
@@ -26,13 +28,11 @@ class AirControl
 
         int bestRoute(string arrival, string destination);              // return the cheapeast cost between arrival and destination
 
-    private:
-
-
-
-
 
         ~AirControl();
+    private:
+        void readAirports();              // read airports data from airports.txt
+        void readFlights();                 // read flights data from flights.txt
 };
 
 #endif
