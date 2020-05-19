@@ -11,31 +11,8 @@ using namespace std;
 
 int main()
 {
-    /*
-    {   // reading files testing
-        AirControl airSystem = AirControl();
-        map<string, Airport*>::iterator ite;    // iterator to loop through each airports and check for flights 
-        for (ite = airSystem.airports.begin(); ite != airSystem.airports.end(); ite++ )
-        {
-            Airport* airport = ite->second;
-            cout << "Currently at " << airport->getName() << " airport:" <<
-                            " There are " << airport->getNumFlights() << " available" << endl;
-
-            Flight* flights = airport->getFlights();
-            for (int i = 0; i < airport->getNumFlights(); i++)
-            {
-                cout << flights[i].getDeparture() << " " << flights[i].getArrival() 
-                                << " " << flights[i].getBasePrice() << " " << flights[i].getDuration() << endl;
-            }
-            
-            cout << endl;
-
-        }
-    }
-*/
-    
-    {
-        cout << "Testing output of AirControl::getAirports() \n";
+     {
+        cout << "*** Testing output of AirControl::getAirports() *** \n";
         AirControl airSystem = AirControl();
         vector<Airport*> airports = airSystem.getAirports();
         for (int i = 0; i < airSystem.getNumAirports(); i++)
@@ -45,9 +22,34 @@ int main()
 
     }
 
+    
+    {   cout << "\n*** Testing the availability of flights ***" << endl;
+        AirControl airSystem = AirControl();
+        vector<Airport*> airports = airSystem.getAirports();
+
+        for (int airportNum = 0; airportNum < airSystem.getNumAirports(); airportNum++)
+        {
+            cout << "Currently at " << airports[airportNum]->getName() << " airport:" <<
+                            " There are " << airports[airportNum]->getNumFlights() << " available" << endl;
+
+            if (airports[airportNum]->getNumFlights() > 0)
+            {
+                Flight* flights = airports[airportNum]->getFlights();
+                for (int flightNum = 0; flightNum < airports[airportNum]->getNumFlights(); flightNum++)
+                {
+                    cout << flights[flightNum].getDeparture() << " " << flights[flightNum].getArrival() 
+                                    << " " << flights[flightNum].getBasePrice() << " " << flights[flightNum].getDuration() << endl;
+                }
+            }
+            
+            cout << endl;
+
+        }
+    }
+
 
     {
-        cout << "\nTesting output of AirControl::directFlightCheck()" << endl;
+        cout << "\n*** Testing output of AirControl::directFlightCheck() ***" << endl;
 
         AirControl airSystem = AirControl();
 
@@ -66,7 +68,7 @@ int main()
 
     }
 
-    
+
 
     return 0;
 

@@ -12,7 +12,7 @@ using namespace std;
 
 class AirControl
 {
-    public:
+    private:
         map<string, Airport*> airports;
         int numAirports;
         int costs[50][50];

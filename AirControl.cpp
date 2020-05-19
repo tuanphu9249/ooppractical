@@ -34,8 +34,6 @@ void AirControl::readFlights()
     string line;
     ifstream flightFile;
     flightFile.open("flight.txt");
-    vector<string> tokens;
-    string intermediate;                // temporary place for each individual word
     string name, departure, arrival;
     int baseCost, duration;
 
@@ -43,10 +41,10 @@ void AirControl::readFlights()
     {
         while (getline(flightFile, line))
         {               
-            istringstream lineStream(line);  // string stream for a line
+            istringstream tempStream(line);  // string stream for a line
 
             // tokenizing w.r.t space ' '
-            lineStream >> name >> departure >> arrival >> baseCost >> duration;
+            tempStream >> name >> departure >> arrival >> baseCost >> duration;
             
             airports[departure]->addFlight(new Flight(name, departure, arrival,
                                             baseCost, duration));
