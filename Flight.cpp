@@ -9,30 +9,26 @@ int Flight::totalFlightID = 0;
 
 Flight::Flight()
 {
-    departureTime = time(0);
-    arrivalTime = time(0);
-
-    departure = NULL;
-    arrival = NULL;
+    departure = "";
+    arrival = "";
     flightName = "";
     basePrice = 0;
 
+    duration = 0;
     flightID = totalFlightID++;
     curBusinessSeat = 0;
     curEcoSeat = 0;
     curFirstSeat = 0;
 }
 
-Flight::Flight(string aName, Airport* aDeparture, Airport* aArrival, int aBasePrice, time_t aDepartureTime, time_t aArrivalTime)
+Flight::Flight(string aName, string aDeparture, string aArrival, int aBasePrice, int aDuration)
 {
-    departureTime = aDepartureTime;
-    arrivalTime = aArrivalTime;
 
     departure = aDeparture;
     arrival = aArrival;
     flightName = aName;
     basePrice = aBasePrice;
-
+    duration = aDuration;
     flightID = totalFlightID++;
     curBusinessSeat = 0;
     curEcoSeat = 0;
@@ -45,24 +41,20 @@ string Flight::getName()
     return flightName;
 }
 
-time_t Flight::getDepartureTime()
-{
-    return departureTime;
-}
 
-time_t Flight::getArrivalTime()
+int Flight::getDuration()
 {
-    return arrivalTime;
+    return duration;
 }
 
 string Flight::getDeparture()
 {
-    return departure->getName();
+    return departure;
 }
 
 string Flight::getArrival()
 {
-    return arrival->getName();
+    return arrival;
 }
 
 int Flight::getID()
@@ -95,23 +87,18 @@ void Flight::setName(string aName)
     flightName = aName;
 }
 
-void Flight::setDepartureTime(time_t aDepartureTime)
+void Flight::setDuration(int aDuration)
 {
-    departureTime = aDepartureTime;
-}
-
-void Flight::setArrivalTime(time_t aArrivalTime)
-{
-    arrivalTime = aArrivalTime;
+    duration = aDuration;
 }
 
 
-void Flight::setDeparture(Airport* aDeparture)
+void Flight::setDeparture(string aDeparture)
 {
     departure = aDeparture;
 }
 
-void Flight::setArrival(Airport* aArrival)
+void Flight::setArrival(string aArrival)
 {
     arrival = aArrival;
 }
