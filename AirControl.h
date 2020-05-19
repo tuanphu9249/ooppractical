@@ -5,19 +5,22 @@
 #include "Flight.h"
 #include "Airport.h"
 #include "Ticket.h"
+#include <map>
+#include <vector>
 using namespace std;
 
 
 class AirControl
 {
-    private:
+    public:
         map<string, Airport*> airports;
         int numAirports;
-        int numFlights;
         int costs[50][50];
     public:
         AirControl();
-
+        
+        vector<Airport*> getAirports();                     // return list of airports that the system manage
+        int getNumAirports();                      // return number of airports that the system manage
 
         vector<Flight*> directFlightCheck(string departure, string arrival); // check if there is a direct
                                                                             // flight between departure and arrival, return the actual flight

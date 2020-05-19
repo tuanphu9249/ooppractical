@@ -3,7 +3,7 @@ using namespace std;
 #include "Airport.h"
 #include "Flight.h"
 
-int totalID = 0;
+int Airport::totalID = 0;
 Airport::Airport()
 {
     name = "";
@@ -24,9 +24,9 @@ void Airport::setName(string aName)
     name = aName;
 }
 
-void Airport::addFlight(Flight aFlight)
+void Airport::addFlight(Flight* aFlight)
 {
-    flights[numFlights++] = aFlight;
+    flights[numFlights++] = *aFlight;
 }
 
 

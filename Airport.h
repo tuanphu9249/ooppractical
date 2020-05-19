@@ -18,7 +18,7 @@ class Airport
     public:
         Airport();
         Airport(string aName);
-        void addFlight(Flight aFlight);
+        void addFlight(Flight* aFlight);
         void setName(string aName);
         void setID(int aID);
 

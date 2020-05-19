@@ -13,7 +13,7 @@ int main()
     // testing Airport::addFlight;
     {
         Airport* adelaide = new Airport("Adelaide");
-        Flight flight1 = Flight();
+        Flight* flight1 = new Flight();
         adelaide->addFlight(flight1);
         if (adelaide->getFlights()[0].getName() != "")
         {
@@ -28,8 +28,8 @@ int main()
      // testing Airport::getNumFlights();
     {
         Airport* adelaide = new Airport("Adelaide");
-        Flight flight1 = Flight();
-        Flight flight2 = Flight();
+        Flight* flight1 = new Flight();
+        Flight* flight2 = new Flight();
 
         adelaide->addFlight(flight1);
         adelaide->addFlight(flight2);
@@ -47,9 +47,9 @@ int main()
     // testing Airport::getFlights();
     {
         Airport* adelaide = new Airport("Adelaide");
-        Flight flight1 = Flight();
-        Flight flight2 = Flight();
-        Flight flight3 = Flight();
+        Flight* flight1 = new Flight();
+        Flight* flight2 = new Flight();
+        Flight* flight3 = new Flight();
         adelaide->addFlight(flight1);
         adelaide->addFlight(flight2);
         adelaide->addFlight(flight3);

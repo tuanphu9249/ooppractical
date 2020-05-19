@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 #include <fstream>
+#include <sstream>
 #include <string>
 #include <vector>
 #include <map>
@@ -16,7 +17,10 @@ void AirControl::readAirports()
     if (airportFile.is_open())
     {
         while (getline(airportFile, line))
-            airports.insert(pair<string, Airport*>(line, new Airport(line));
+        {
+            airports.insert(pair<string, Airport*>(line, new Airport(line)));
+            numAirports++;
+        }
 
     }
     airportFile.close();
@@ -29,41 +33,45 @@ void AirControl::readFlights()
 {
     string line;
     ifstream flightFile;
-    flightFile.open("filghts.txt");
+    flightFile.open("flight.txt");
     vector<string> tokens;
-    stringstream tempStream(line);      // string stream for a line
     string intermediate;                // temporary place for each individual word
+    string name, departure, arrival;
+    int baseCost, duration;
 
     if (flightFile.is_open())
     {
         while (getline(flightFile, line))
         {               
-            // tokenizing w.r.t space ' '
-            while (getline(tempStream, intermediate, ' '))
-            {
-                tokens.push_back(intermidiate);
-            }
+            istringstream lineStream(line);  // string stream for a line
 
-            airports[tokens[1]]->addFlight(Flight(tokens[0], tokens[1], tokens[2],
-                                            stoi(tokens[4]), stoi(tokens[5])));
+            // tokenizing w.r.t space ' '
+            lineStream >> name >> departure >> arrival >> baseCost >> duration;
+            
+            airports[departure]->addFlight(new Flight(name, departure, arrival,
+                                            baseCost, duration));
         }
     }
+    flightFile.close();
 }
 
 
 AirControl::AirControl()
 {
     numAirports = 0;
-    for(int i = 0; i < 50; i++)
+    readAirports();
+    readFlights();
+
+    // initilise verticies and weight of the map
+    for (int i = 0; i < numAirports; i++)
     {
-        for (int j = 0; j < 50; j++)
+        for (int j = 0; j < numAirports; j++)
         {
-            costs[i][j] = POS_INF;
+            if (i == j) costs[i][j] = 0;
+            costs[i][j] = (int)POS_INF;
         }
         
     }
-    readAirports();
-    readFlights();
 
     //  fill in costs[][]
     map<string, Airport*>::iterator ite;    // iterator to loop through each airports and check for flights 
@@ -80,20 +88,54 @@ AirControl::AirControl()
         }
 
     }
+}
 
+vector<Airport*> AirControl::getAirports()
+{
+    vector<Airport*> allAirports;
+    map<string, Airport*>::iterator ite;
+
+    for (ite = airports.begin(); ite != airports.end(); ite++ )
+    {
+        allAirports.push_back(ite->second);
+
+    }
+    return allAirports;
+
+}
+
+int AirControl::getNumAirports()
+{
+    return numAirports;
+    
 }
 
 vector<Flight*> AirControl::directFlightCheck(string departure, string arrival)
 {
-    Airport departureAirport = airports[departure];
-    Flight* flightsFromDeparture = departureAirport.getFlights();
+    Airport* departureAirport = airports[departure];
+    Flight* flightsFromDeparture = departureAirport->getFlights();
     vector<Flight*> result;
 
-    for (int i = 0; i < departureAirport.getNumFlights(); i++)
+    for (int i = 0; i < departureAirport->getNumFlights(); i++)
     {   
         if (flightsFromDeparture[i].getArrival() == arrival)
-            result.push_back(flightsFromDeparture[i]);
+            result.push_back(&flightsFromDeparture[i]);
     }
     return result;
 }
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+AirControl::~AirControl()
+{}
