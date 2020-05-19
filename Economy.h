@@ -7,7 +7,7 @@ using namespace std;
 class Economy : public Ticket
 {
     public:
-        Economy(Flight aFlight, string aName, string aDOB, string aSeatNumber);
+        Economy(Flight* aFlight, string aName, string aDOB, string aSeatNumber);
         virtual int priceCalculation();
 
 };
