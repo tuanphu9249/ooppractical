@@ -23,14 +23,12 @@ Flight::Flight()
 
 Flight::Flight(string aName, string aDeparture, string aArrival, int aBasePrice, int aDuration)
 {
-    departureTime = aDepartureTime;
-    arrivalTime = aArrivalTime;
 
     departure = aDeparture;
     arrival = aArrival;
     flightName = aName;
     basePrice = aBasePrice;
-
+    duration = aDuration;
     flightID = totalFlightID++;
     curBusinessSeat = 0;
     curEcoSeat = 0;
