@@ -2,6 +2,8 @@
 using namespace std;
 #include <fstream>
 #include <string>
+#include <vector>
+#include <map>
 #include "AirControl.h"
 #include "Airport.h"
 #define POS_INF 10e9
@@ -14,7 +16,7 @@ void AirControl::readAirports()
     if (airportFile.is_open())
     {
         while (getline(airportFile, line))
-            airports[numAirports++] = new Airport(line);
+            airports.insert(pair<string, Airport*>(line, new Airport(line));
 
     }
     airportFile.close();
@@ -28,23 +30,22 @@ void AirControl::readFlights()
     string line;
     ifstream flightFile;
     flightFile.open("filghts.txt");
+    vector<string> tokens;
+    stringstream tempStream(line);      // string stream for a line
+    string intermediate;                // temporary place for each individual word
+
     if (flightFile.is_open())
     {
         while (getline(flightFile, line))
-        {   
-            vector<string> tokens;
-            stringstream tempStream(line); // string stream for line
-            string intermediate;
-            
+        {               
             // tokenizing w.r.t space ' '
             while(getline(tempStream, intermediate, ' '))
             {
                 tokens.push_back(intermidiate);
             }
 
-            flights[numFlights++] = Flight(tokens[0], tokens[1], tokens[2], tokens[3],
-                                             stoi(tokens[4]), tokens[5], tokens[6]);
-
+            airports[tokens[1]]->addFlight(Flight(tokens[0], tokens[1], tokens[2],
+                                            stoi(tokens[4]), stoi(tokens[5])));
         }
     }
 }
@@ -60,6 +61,8 @@ AirControl::AirControl()
     readFlights(flights);
 
     //  fill in costs[][]
+
+
 
 
 

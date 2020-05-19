@@ -1,0 +1,8 @@
+//arrival destination baseCost duration
+
+adelaide melbourne 123 2
+hochiminh melbourne 1253 8
+sanfrancisco losangeles 652 4
+rome venice 243 3
+
+
