@@ -54,7 +54,14 @@ void AirControl::readFlights()
 AirControl::AirControl()
 {
     numAirports = 0;
-    costs = {POS_INF};
+    for(int i = 0; i < 50; i++)
+    {
+        for (int j = 0; j < 50; j++)
+        {
+            costs[i][j] = POS_INF;
+        }
+        
+    }
     readAirports();
     readFlights();
 

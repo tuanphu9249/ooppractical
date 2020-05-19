@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Flight.h"
 #include "Airport.h"
+#include "Ticket.h"
 using namespace std;
 
 
@@ -13,7 +14,7 @@ class AirControl
         map<string, Airport*> airports;
         int numAirports;
         int numFlights;
-        int[50][50] costs;
+        int costs[50][50];
     public:
         AirControl();
 
