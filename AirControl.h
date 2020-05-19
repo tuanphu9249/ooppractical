@@ -2,7 +2,6 @@
 #define AIRCONTROL_H
 
 #include <iostream>
-#include <map>
 #include "Flight.h"
 #include "Airport.h"
 using namespace std;
@@ -19,14 +18,15 @@ class AirControl
         AirControl();
 
 
-        Flight* flightCheck(string arrival, string destination); // show flight ID, name, # of passengers,
-                                                                    // price, speed, time of all flights available
-        bool buyTicket(string arrival, string destination, Ticket* ticket);    
+        vector<Flight*> directFlightCheck(string departure, string arrival); // check if there is a direct
+                                                                            // flight between departure and arrival, return the actual flight
+                                                                            // if no return null
+        bool buyTicket(string departure, string arrival, Ticket* ticket);    
 
-        Airport* cheapeastRoute(string arrival, string destination);    // return the cheapeast route
+        Airport* cheapeastRoute(string departure, string arrival);    // return the cheapeast route
                                                                         // between arrival and destination as an array of airports
 
-        int bestRoute(string arrival, string destination);              // return the cheapeast cost between arrival and destination
+        int bestRoute(string departure, string arrival);              // return the cheapeast cost between arrival and destination
 
 
         ~AirControl();

@@ -39,7 +39,7 @@ void AirControl::readFlights()
         while (getline(flightFile, line))
         {               
             // tokenizing w.r.t space ' '
-            while(getline(tempStream, intermediate, ' '))
+            while (getline(tempStream, intermediate, ' '))
             {
                 tokens.push_back(intermidiate);
             }
@@ -53,35 +53,40 @@ void AirControl::readFlights()
 
 AirControl::AirControl()
 {
-    airports = new Airport[50];
     numAirports = 0;
     costs = {POS_INF};
-
-    readAirports(airports);
-    readFlights(flights);
+    readAirports();
+    readFlights();
 
     //  fill in costs[][]
-    map<string, Airport*>::iterator ite; 
-    for (ite = airports.begin(); ite != airports.end(), ite++)
+    map<string, Airport*>::iterator ite;    // iterator to loop through each airports and check for flights 
+    for (ite = airports.begin(); ite != airports.end(); ite++)
     {
         Flight* flights = ite->second->getFlights();
         for (int i = 0; i < ite->second->getNumFlights(); i++)
         {
             string departure = flights[i].getDeparture();
             string arrival = flights[i].getArrival();
-            int arrivalID = airports[arrival]->
+            int arrivalID = airports[arrival]->getID();
+            int departureID = airports[departure]->getID();
+            costs[departureID][arrivalID] = flights[i].getBasePrice();
         }
 
     }
 
-
-
-
-
-
-
-
-
-
-
 }
+
+vector<Flight*> AirControl::directFlightCheck(string departure, string arrival)
+{
+    Airport departureAirport = airports[departure];
+    Flight* flightsFromDeparture = departureAirport.getFlights();
+    vector<Flight*> result;
+
+    for (int i = 0; i < departureAirport.getNumFlights(); i++)
+    {   
+        if (flightsFromDeparture[i].getArrival() == arrival)
+            result.push_back(flightsFromDeparture[i]);
+    }
+    return result;
+}
+ 
