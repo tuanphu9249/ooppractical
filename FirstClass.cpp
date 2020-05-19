@@ -11,9 +11,10 @@ FirstClass::FirstClass(Flight* aFlight, string aName, string aDOB, string aSeatN
     DOB = aDOB;
     seatNumber = aSeatNumber;
     type = "First Class";
+    price = flight->getBasePrice()*COEF;
 }
 
-int FirstClass::priceCalculation()
+void FirstClass::setPrice()
 {
-    return flight->getBasePrice()*COEF;
+    price = flight->getBasePrice()*COEF;
 }

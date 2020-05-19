@@ -15,9 +15,9 @@ Ticket::Ticket(Flight* aFlight, string aName, string aDOB, string aSeatNumber)
     seatNumber = aSeatNumber;
 
 }
-int Ticket::priceCalculation()
+void Ticket::setPrice()
 {
-    return 0;
+    price = 0;
 }
 Flight* Ticket::getFlight()
 {
