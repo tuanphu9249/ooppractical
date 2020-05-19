@@ -3,12 +3,12 @@
 #include <iostream>
 using namespace std;
 #include "Ticket.h"
-
+#include "Flight.h"
 class Economy : public Ticket
 {
     public:
         Economy(Flight* aFlight, string aName, string aDOB, string aSeatNumber);
-        virtual int priceCalculation();
+        virtual void setPrice();
 
 };
 

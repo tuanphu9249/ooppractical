@@ -11,9 +11,10 @@ Business::Business(Flight* aFlight, string aName, string aDOB, string aSeatNumbe
     DOB = aDOB;
     seatNumber = aSeatNumber;
     type = "Business";
+    price = flight->getBasePrice()*COEF;
 }
 
-int Business::priceCalculation()
+void Business::setPrice()
 {
-    return flight->getBasePrice()*COEF;
+    price = flight->getBasePrice()*COEF;
 }

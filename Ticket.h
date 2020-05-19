@@ -16,13 +16,12 @@ class Ticket
     public:
         Ticket();
         Ticket(Flight* aFlight, string aName, string aDOB, string aSeatNumber);
-        virtual int priceCalculation();
-
+        int getPrice();
+        virtual void setPrice();
         Flight* getFlight();
         string getName();
         string getDOB();
         string getSeatNumber();        
-        int getPrice();
 
         void setFlight(Flight* aFlight);
         void setName(string aName);

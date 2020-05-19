@@ -11,9 +11,10 @@ Economy::Economy(Flight* aFlight, string aName, string aDOB, string aSeatNumber)
     DOB = aDOB;
     seatNumber = aSeatNumber;
     type = "Economy";
+    price = flight->getBasePrice()*COEF;
 }
 
-int Economy::priceCalculation()
+void Economy::setPrice()
 {
-    return flight->getBasePrice()*COEF;
+    price = flight->getBasePrice()*COEF;
 }
