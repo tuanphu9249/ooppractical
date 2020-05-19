@@ -12,14 +12,11 @@ class Airport;  // foward declarations to avoid dependency loop
 class Flight
 {
     protected:
-    // time
-        time_t departureTime;
-        time_t arrivalTime;
-    // 
-        Airport* departure; // departure destination
-        Airport* arrival;   // arrival destination
+        string departure; // departure airport
+        string arrival;   // arrival airport
         string flightName; // VJ-696
         
+        int duration;
         int basePrice;
         int flightID;        // ID of flight
         static int totalFlightID; // increase whenever instantiate a new flight 
@@ -29,24 +26,22 @@ class Flight
 
     public: 
         Flight();
-        Flight(string aName, Airport* aDeparture, Airport* aArrival, int aPrice, time_t aDepartureTime, time_t aArrivalTime);
+        Flight(string aName, string aDeparture, string aArrival, int aBasePrice, int aDuration);
 
         string getName();        
-        time_t getDepartureTime();
-        time_t getArrivalTime();
         string getDeparture();
         string getArrival();
         int getID();
+        int getDuration();
         int getCurBusinessSeat();
         int getCurEcoSeat();
         int getCurFirstSeat();  
         int getBasePrice(); 
 
         void setName(string aName);
-        void setDepartureTime(time_t aDeparturetime);
-        void setArrivalTime(time_t aArrivaltime);
-        void setDeparture(Airport* aDeparture);
-        void setArrival(Airport* aArrival);
+        void setDuration(int aDuration);
+        void setDeparture(string aDeparture);
+        void setArrival(string aArrival);
         void setCurBusinessSeat(int num);
         void setCurEcoSeat(int num); 
         void setCurFirstSeat(int num);
