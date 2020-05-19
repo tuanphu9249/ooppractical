@@ -2,6 +2,7 @@
 #define AIRCONTROL_H
 
 #include <iostream>
+#include <map>
 #include "Flight.h"
 #include "Airport.h"
 using namespace std;
@@ -10,8 +11,7 @@ using namespace std;
 class AirControl
 {
     private:
-        Airport* airports;
-        Flight* flights;
+        map<string, Airport*> airports;
         int numAirports;
         int numFlights;
         int[50][50] costs;
