@@ -43,7 +43,7 @@ void AirControl::readFlights()
             }
 
             flights[numFlights++] = Flight(tokens[0], tokens[1], tokens[2], tokens[3],
-                                             stoi(tokens[4]), tokens[5], tokens[6]);
+            stoi(tokens[4]), tokens[5], tokens[6]);
 
         }
     }

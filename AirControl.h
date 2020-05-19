@@ -19,7 +19,7 @@ class AirControl
         AirControl();
 
 
-        FlightType* flightCheck(string arrival, string destination); // show flight ID, name, # of passengers,
+        Flight* flightCheck(string arrival, string destination); // show flight ID, name, # of passengers,
                                                                     // price, speed, time of all flights available
         bool buyTicket(string arrival, string destination, Ticket* ticket);    
 
