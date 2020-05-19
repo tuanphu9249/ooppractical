@@ -7,9 +7,9 @@ using namespace std;
 class FirstClass : public Ticket
 {
     public:
-        FirstClass(Flight aFlight, string aName, string aDOB, string aSeatNumber);
+        FirstClass(Flight* aFlight, string aName, string aDOB, string aSeatNumber);
         virtual int priceCalculation();
 
-}
+};
 
 #endif

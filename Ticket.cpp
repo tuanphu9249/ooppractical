@@ -37,7 +37,7 @@ string Ticket::getSeatNumber()
 }        
 int Ticket::getPrice()
 {
-    return price
+    return price;
 }
 
 void Ticket::setFlight(Flight* aFlight)

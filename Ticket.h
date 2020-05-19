@@ -6,13 +6,13 @@ using namespace std;
 
 class Ticket
 {
-    private:
+    protected:
         Flight* flight;
         string name;
         string DOB;
         string seatNumber;
         string type;
-        int price
+        int price;
     public:
         Ticket();
         Ticket(Flight* aFlight, string aName, string aDOB, string aSeatNumber);

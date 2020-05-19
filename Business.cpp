@@ -3,17 +3,17 @@
 #include "Flight.h"
 #include "Ticket.h"
 #define COEF 5; // coeffiecient for this flight type
-
-Business::Business(Flight aFlight, string aName, string aDOB, string aSeatNumber) : Ticket(aFlight, aName, aDOB, aSeatNumber)
+using namespace std;
+Business::Business(Flight* aFlight, string aName, string aDOB, string aSeatNumber) : Ticket(aFlight, aName, aDOB, aSeatNumber)
 {
     flight = aFlight;
     name = aName;
     DOB = aDOB;
-    SeatNumber = aSeatNumber;
+    seatNumber = aSeatNumber;
     type = "Business";
 }
 
 int Business::priceCalculation()
 {
-    return flight.getBasePrice()*COEF;
+    return flight->getBasePrice()*COEF;
 }

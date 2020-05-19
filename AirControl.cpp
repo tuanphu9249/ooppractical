@@ -61,8 +61,18 @@ AirControl::AirControl()
     readFlights(flights);
 
     //  fill in costs[][]
+    map<string, Airport*>::iterator ite; 
+    for (ite = airports.begin(); ite != airports.end(), ite++)
+    {
+        Flight* flights = ite->second->getFlights();
+        for (int i = 0; i < ite->second->getNumFlights(); i++)
+        {
+            string departure = flights[i].getDeparture();
+            string arrival = flights[i].getArrival();
+            int arrivalID = airports[arrival]->
+        }
 
-
+    }
 
 
 
