@@ -3,9 +3,11 @@ using namespace std;
 #include "Airport.h"
 #include "Flight.h"
 
+int totalID = 0;
 Airport::Airport()
 {
     name = "";
+    ID = totalID++;
     numFlights = 0;
     flights = new Flight[100];
 }
@@ -31,6 +33,11 @@ void Airport::addFlight(Flight aFlight)
 string Airport::getName()
 {
     return name;
+}
+
+int Airport::getID()
+{
+    return ID; 
 }
 
 Flight* Airport::getFlights()
