@@ -9,12 +9,12 @@ using namespace std;
 
 
 
-int main()
+int main(int argc, char *argv[])        // argv[1] holds airports.txt, argv[2] holds flight.txt
 {
      {
         cout << "*** Testing output of AirControl::getAirports() *** \n";
         
-        AirControl airSystem = AirControl("airports.txt", "flight.txt");
+        AirControl airSystem = AirControl(argv[1], argv[2]);
         vector<Airport*> airports = airSystem.getAirports();
         for (int i = 0; i < airSystem.getNumAirports(); i++)
         {
@@ -25,7 +25,7 @@ int main()
 
     
     {   cout << "\n*** Testing the availability of flights ***" << endl;
-        AirControl airSystem = AirControl("airports.txt", "flight.txt");
+        AirControl airSystem = AirControl(argv[1], argv[2]);
         vector<Airport*> airports = airSystem.getAirports();
 
         for (int airportNum = 0; airportNum < airSystem.getNumAirports(); airportNum++)
@@ -52,7 +52,7 @@ int main()
     {
         cout << "\n*** Testing output of AirControl::directFlightCheck() ***" << endl;
 
-        AirControl airSystem = AirControl("airports.txt", "flight.txt");
+        AirControl airSystem = AirControl(argv[1], argv[2]);
 
         vector<Flight*> testFlight = airSystem.directFlightCheck("Adelaide", "Melbourne");
         if (!testFlight.empty())
