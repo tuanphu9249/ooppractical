@@ -1,0 +1,9 @@
+JS-110 Adelaide Sydney 10 8
+DS-112 Darwin Kuala Lumpur 9 10
+VJ-303 Melbourne Budapest 20 11
+MH-370 Kuala Lampur Beijing 23 15
+JS-110 Adelaide Melbourne 10 8
+VL-091 Darwin Kuala Lumpur 9 10
+VJ-303 Melbourne Budapest 20 11
+MH-370 Kuala Lampur Beijing 23 15
+10 5
