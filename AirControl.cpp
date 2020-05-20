@@ -9,11 +9,11 @@ using namespace std;
 #include "Airport.h"
 #define POS_INF 10e9
 
-void AirControl::readAirports()
+void AirControl::readAirports(string airportText)
 {
     string line;
     ifstream airportFile;
-    airportFile.open("airports.txt");
+    airportFile.open(airportText);
     if (airportFile.is_open())
     {
         while (getline(airportFile, line))
@@ -29,11 +29,11 @@ void AirControl::readAirports()
 
 
 //TODO: fix readFlights() so that each airport is assigned with its flights.
-void AirControl::readFlights()
+void AirControl::readFlights(string flightText)
 {
     string line;
     ifstream flightFile;
-    flightFile.open("flight.txt");
+    flightFile.open(flightText);
     string name, departure, arrival;
     int baseCost, duration;
 
@@ -54,11 +54,11 @@ void AirControl::readFlights()
 }
 
 
-AirControl::AirControl()
+AirControl::AirControl(string airportText, string flightText)
 {
     numAirports = 0;
-    readAirports();
-    readFlights();
+    readAirports(airportText);
+    readFlights(flightText);
 
     // initilise verticies and weight of the map
     for (int i = 0; i < numAirports; i++)

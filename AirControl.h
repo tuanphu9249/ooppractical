@@ -17,7 +17,7 @@ class AirControl
         int numAirports;
         int costs[50][50];
     public:
-        AirControl();
+        AirControl(string airportFile, string flightFile);
         
         vector<Airport*> getAirports();                     // return list of airports that the system manage
         int getNumAirports();                      // return number of airports that the system manage
@@ -35,8 +35,8 @@ class AirControl
 
         ~AirControl();
     private:
-        void readAirports();              // read airports data from airports.txt
-        void readFlights();                 // read flights data from flights.txt
+        void readAirports(string airportText);              // read airports data from airports.txt
+        void readFlights(string flightText);                 // read flights data from flights.txt
 };
 
 #endif
