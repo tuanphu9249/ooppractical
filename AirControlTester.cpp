@@ -13,7 +13,8 @@ int main()
 {
      {
         cout << "*** Testing output of AirControl::getAirports() *** \n";
-        AirControl airSystem = AirControl();
+        
+        AirControl airSystem = AirControl("airports.txt", "flight.txt");
         vector<Airport*> airports = airSystem.getAirports();
         for (int i = 0; i < airSystem.getNumAirports(); i++)
         {
@@ -24,7 +25,7 @@ int main()
 
     
     {   cout << "\n*** Testing the availability of flights ***" << endl;
-        AirControl airSystem = AirControl();
+        AirControl airSystem = AirControl("airports.txt", "flight.txt");
         vector<Airport*> airports = airSystem.getAirports();
 
         for (int airportNum = 0; airportNum < airSystem.getNumAirports(); airportNum++)
@@ -51,7 +52,7 @@ int main()
     {
         cout << "\n*** Testing output of AirControl::directFlightCheck() ***" << endl;
 
-        AirControl airSystem = AirControl();
+        AirControl airSystem = AirControl("airports.txt", "flight.txt");
 
         vector<Flight*> testFlight = airSystem.directFlightCheck("Adelaide", "Melbourne");
         if (!testFlight.empty())
