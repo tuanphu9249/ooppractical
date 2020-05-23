@@ -37,10 +37,11 @@ class AirControl
 
 
         ~AirControl();
-    private:
+    // private:
+    public:
         void readAirports(string airportText);              // read airports data from airports.txt
         void readFlights(string flightText);                 // read flights data from flights.txt
-        void Dijkstra(int a,vector<int> weight,int* path);
+        void Dijkstra(int a,vector<int>* weight,int* path);
 };
 
 #endif

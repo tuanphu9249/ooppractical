@@ -8,7 +8,7 @@ using namespace std;
 #include <map>
 #include "AirControl.h"
 #include "Airport.h"
-#define POS_INF 10e9
+#define POS_INF 10e7
 
 void AirControl::readAirports(string airportText)
 {
@@ -130,13 +130,11 @@ struct AirControl::compare
     }
 };
 
-
-void AirControl::Dijkstra(int a, vector<int> weight, int* path)
+void AirControl::Dijkstra(int a, vector<int>* weight, int* path)
 {
     priority_queue<pair<int,int>,vector<pair<int,int>>,compare> pq;
     pq.push(make_pair(a,0));
-    weight[a] = 0;
-    
+    (*weight)[a] = 0;
     while(!pq.empty())
     {
         pair<int,int> top = pq.top();
@@ -146,9 +144,9 @@ void AirControl::Dijkstra(int a, vector<int> weight, int* path)
         for(int i = 0; i < graph[p].size(); i++)
         {
             pair<int,int> neighbor = graph[p][i];
-            if (w + neighbor.second < weight[neighbor.first]){
-                weight[neighbor.first] = w + neighbor.second;
-                pq.push(pair<int,int>(neighbor.first, weight[neighbor.first]));
+            if (w + neighbor.second < (*weight)[neighbor.first]){
+                (*weight)[neighbor.first] = w + neighbor.second;
+                pq.push(pair<int,int>(neighbor.first, (*weight)[neighbor.first]));
                 path[neighbor.first] = p;
             }
         }
@@ -168,7 +166,7 @@ int AirControl::getCheapestRoutePrice(string departure,string arrival)
             graph[i].push_back(pair<int,int>(j,costs[i][j]));
         }
     }
-    Dijkstra(depid,dist,path);
+    Dijkstra(depid,&dist,path);
     return dist[arrid];
 }
 
@@ -178,7 +176,7 @@ vector<Airport*> AirControl::cheapeastRoute(string departure, string arrival)
     int arrID = airports[arrival]->getID();
     vector<Airport*> returnPath;
     vector<int> dist(55,POS_INF);
-    int path[55];
+    int path[55] = {-1};
     graph = vector<vector<pair<int,int>>>(55,vector<pair<int,int>>());
     for(int i = 0; i < numAirports; i++)
     {
@@ -186,7 +184,7 @@ vector<Airport*> AirControl::cheapeastRoute(string departure, string arrival)
             graph[i].push_back(pair<int,int>(j,costs[i][j]));
         }
     }
-    Dijkstra(depID,dist,path);
+    Dijkstra(depID,&dist,path);
     int n = arrID;
     while(path[n] != -1)
     {
