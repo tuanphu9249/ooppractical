@@ -19,7 +19,8 @@ class AirControl
         vector<vector<pair<int,int>>> graph;
         struct compare;
     public:
-        AirControl(string airportFile, string flightFile);
+        AirControl();               // default constructor, do nothing
+        AirControl(string airportFile, string flightFile);  // constructor that reads from files
         
         vector<Airport*> getAirports();                     // return list of airports that the system manage
         int getNumAirports();                      // return number of airports that the system manage

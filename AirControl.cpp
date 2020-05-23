@@ -54,6 +54,11 @@ void AirControl::readFlights(string flightText)
     flightFile.close();
 }
 
+// default constructor, do nothing
+AirControl::AirControl()
+{
+
+}
 
 AirControl::AirControl(string airportText, string flightText)
 {
