@@ -13,9 +13,11 @@ using namespace std;
 class AirControl
 {
     private:
-        map<string, Airport*> airports;
+        map<string, Airport*> airports;     // input string whill return airport
         int numAirports;
         int costs[50][50];
+        vector<vector<pair<int,int>>> graph;
+        struct compare;
     public:
         AirControl(string airportFile, string flightFile);
         
@@ -27,16 +29,18 @@ class AirControl
                                                                             // if no return null
         bool buyTicket(string departure, string arrival, Ticket* ticket);    
 
-        Airport* cheapeastRoute(string departure, string arrival);    // return the cheapeast route
+        vector<Airport*> cheapeastRoute(string departure, string arrival);    // return the cheapeast route
                                                                         // between arrival and destination as an array of airports
 
-        int bestRoute(string departure, string arrival);              // return the cheapeast cost between arrival and destination
+        int getCheapestRoutePrice(string departure, string arrival);              // return the cheapeast cost between arrival and destination
+
 
 
         ~AirControl();
     private:
         void readAirports(string airportText);              // read airports data from airports.txt
         void readFlights(string flightText);                 // read flights data from flights.txt
+        void Dijkstra(int a,vector<int> weight,int* path);
 };
 
 #endif
