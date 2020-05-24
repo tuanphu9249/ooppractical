@@ -35,11 +35,10 @@ class AirControl
 
         int getCheapestRoutePrice(string departure, string arrival);              // return the cheapeast cost between arrival and destination
 
-
+        vector<Flight*> getFlightsFromAirport(string airportName);
 
         ~AirControl();
-    // private:
-    public:
+    private:
         void readAirports(string airportText);              // read airports data from airports.txt
         void readFlights(string flightText);                 // read flights data from flights.txt
         void Dijkstra(int a,vector<int>* weight,int* path);

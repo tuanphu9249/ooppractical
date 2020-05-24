@@ -76,7 +76,6 @@ AirControl::AirControl(string airportText, string flightText)
         }
         
     }
-
     //  fill in costs[][]
     map<string, Airport*>::iterator ite;    // iterator to loop through each airports and check for flights 
     for (ite = airports.begin(); ite != airports.end(); ite++)
@@ -204,7 +203,16 @@ vector<Airport*> AirControl::cheapeastRoute(string departure, string arrival)
     return returnPath;
 }    // return the cheapeast route
 
-
+vector<Flight*> AirControl::getFlightsFromAirport(string airportName)
+{
+    Airport* tempairprort = airports[airportName];
+    Flight* temp = tempairprort->getFlights();
+    vector<Flight*> tempflight;
+    for(int i = 0; i < tempairprort->getNumFlights(); i++){
+        tempflight.push_back(temp+i);
+    }
+    return tempflight;
+}
 
 AirControl::~AirControl()
 {}

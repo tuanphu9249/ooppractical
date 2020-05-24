@@ -28,7 +28,8 @@ void Menu::mainMenu()
     cout << " 1. Check Direct Flight" << endl;
     cout << " 2. Find Cheapest Flight" << endl;
     cout << " 3. Buy Ticket" << endl;
-    cout << " 4. Exit" << endl << endl << endl << endl << endl;
+    cout << " 4. Check All Flight From A Airport" << endl;
+    cout << " 5. Exit" << endl << endl << endl << endl << endl;
     cout << "   Enter your options: ";
 }
 
@@ -148,6 +149,35 @@ void Menu::buyTicketMenu()
 
 }
 
+void Menu::CheckAllflight()
+{
+
+    string departureAirport, arrivalAirport;
+    system("clear");
+    cout << endl;
+    cout << "==========================================================" << endl;
+    cout << "                        Air Control                          " << endl;
+    cout << "==========================================================" << endl;
+    cout << endl;
+
+    cout << "Departure Airport: ";
+    cin >> departureAirport;
+    vector<Flight*> flights = airSystem.getFlightsFromAirport(departureAirport);
+    vector<Flight*>::iterator it;
+    if(flights.size() != 0){
+        cout << "There are " << flights.size() <<" flight from "<< departureAirport << endl;
+        for(it = flights.begin(); it != flights.end(); it++)
+        {
+            printFlightInfo(*it);
+        }
+    }
+    else
+    {
+        cout << "There is no flight from " << departureAirport << " airport" << endl;
+    }
+    
+    holdScreen();
+}
 
 void Menu::holdScreen()
 {

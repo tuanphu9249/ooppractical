@@ -31,6 +31,9 @@ int main(int argc, char *argv[])        // argv[1] holds airports.txt, argv[2] h
                 menu.buyTicketMenu();
                 break;
             case 4:
+                menu.CheckAllflight();
+                break;
+            case 5:
                 return 0 ;
             default:
                 system("clear");

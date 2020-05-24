@@ -20,6 +20,7 @@ class Menu
         void findCheapestFlightMenu();   // 2
         void buyTicketMenu();    // 3
         void holdScreen();
+        void CheckAllflight();
         ~Menu();
 
     private:
