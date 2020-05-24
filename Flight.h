@@ -4,9 +4,9 @@
 #include <iostream>
 #include <ctime>
 using namespace std;
+#include "Ticket.h"
 
 class Airport;  // foward declarations to avoid dependency loop
-class Ticket;
 
 class Flight
 {

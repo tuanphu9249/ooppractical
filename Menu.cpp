@@ -162,7 +162,7 @@ void Menu::buyTicketMenu()
         cout << "There are " << flights.size() << " flights available..." << endl << endl << endl;
         for (int i = 0; i < flights.size(); i++)
         {
-            cout << i+1 << ". ";
+            cout << i+1 << ". " << endl;
             printFlightInfo(flights[i]);
         }
     }
@@ -243,7 +243,7 @@ void Menu::printTicketInfo(Ticket* ticket)
 {
     cout << ticket->getFlightName() << " " << ticket->getDeparture() << ticket->getArrival()  << endl;
     cout << "Passenger: " << ticket->getName() << "    " << "DOB: " << ticket->getDOB() << "    " << "Seat: " << ticket->getSeatNumber() << endl;
-    cout << "Class: " << ticket->getType() << "    " << "Price: " << ticket->getPrice() << endl;
+    cout << "Class: " << ticket->getType() << "    " << "Price: $" << ticket->getPrice() << endl;
 }
 
 void Menu::CheckFlightFromMenu()
