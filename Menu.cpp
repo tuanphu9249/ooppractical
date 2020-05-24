@@ -6,6 +6,9 @@
 #include "Flight.h"
 #include "Airport.h"
 #include "Ticket.h"
+#include "Business.h"
+#include "Economy.h"
+#include "FirstClass.h"
 #include <vector>
 #define POS_INF 10e7
 using namespace std;
@@ -58,7 +61,6 @@ void Menu::directFlightCheckMenu()
         cout << "There are " << flights.size() << " flights available..." << endl << endl << endl;
         for (int i = 0; i < flights.size(); i++)
         {
-            // TODO: add flight not available condition here
             printFlightInfo(flights[i]);
         }
     }
@@ -66,7 +68,6 @@ void Menu::directFlightCheckMenu()
     holdScreen();
 
 }
-
 
 void Menu::printFlightInfo(Flight* flight)
 {
@@ -100,7 +101,7 @@ void Menu::findCheapestFlightMenu()
     else
     {
         vector<Airport*> route = airSystem.cheapeastRoute(departureAirport, arrivalAirport);
-        cout << "The cheapest route available is: " << endl;
+        cout << "The cheapest route is: " << endl;
         vector<Airport*>::iterator iter;
         for (iter = route.end() - 1; iter >= route.begin(); iter--)
         {
@@ -116,7 +117,7 @@ void Menu::findCheapestFlightMenu()
         vector<Flight*>::iterator iter2;
         for (iter1 = route.end() - 1; iter1 > route.begin(); iter1--)
         {
-            cout << "***Available Flight from " << (*iter1)->getName() << " to " << (*(iter1-1))->getName() << "***"<< endl;
+            cout << "***Available flight from " << (*iter1)->getName() << " to " << (*(iter1-1))->getName() << "***"<< endl;
             vector<Flight*> tempflight;
             tempflight = airSystem.directFlightCheck((*iter1)->getName(),(*(iter1-1))->getName());
             for(iter2 = tempflight.begin(); iter2 != tempflight.end(); iter2 ++){
@@ -130,6 +131,7 @@ void Menu::findCheapestFlightMenu()
     holdScreen();
 
 }
+
 void Menu::buyTicketMenu()
 {
     string departureAirport, arrivalAirport;
@@ -145,14 +147,109 @@ void Menu::buyTicketMenu()
     cout << endl;
     cout << "Arrival Airport: ";
     cin >> arrivalAirport;
+    cout << endl << endl;
+
+    vector<Flight*> flights = airSystem.directFlightCheck(departureAirport, arrivalAirport);
+    if (flights.size() == 0)
+    {
+        cout << "No flights available from " << departureAirport << " to " << arrivalAirport << endl << endl;
+        holdScreen();
+        return;
+    }
+
+    else
+    {
+        cout << "There are " << flights.size() << " flights available..." << endl << endl << endl;
+        for (int i = 0; i < flights.size(); i++)
+        {
+            cout << i+1 << ". ";
+            printFlightInfo(flights[i]);
+        }
+    }
+
     cout << endl;
+
+    int flightChoosen;
+    do {
+        cout << "Enter your choice: ";
+        cin >> flightChoosen;
+        flightChoosen = flightChoosen-1;
+        cin.ignore();
+    } while (flightChoosen < 0 || flightChoosen >= flights.size());
+    
+
+    string DOB;
+    string name;
+    int type;
+    cout << "Enter your name: ";
+    getline(cin, name);
+    cout << "Date of Birth: ";
+    cin >> DOB;
+    cout << "Flight type:    1. Business     2. First Class     3. Economy" << endl;
+    cout << "Enter your choice: ";
+
+    cin >> type;
+
+    Ticket* ticket;
+    switch(type)
+    {
+        case (1):
+            ticket = new Business(flights[flightChoosen]->getName(), name, DOB, 1, flights[flightChoosen]->getBasePrice());
+            break;
+        case (2):
+            ticket = new FirstClass(flights[flightChoosen]->getName(), name, DOB, 1, flights[flightChoosen]->getBasePrice());
+            break;
+        case (3):
+            ticket = new Economy(flights[flightChoosen]->getName(), name, DOB, 1, flights[flightChoosen]->getBasePrice());
+            break;
+        default:
+            cout << "Sorry, something went wrong" << endl << endl;
+            holdScreen(); 
+            return;
+    }
+
+    int money;
+
+    cout << "The cost for this flight is $" << ticket->getPrice() << endl;
+    cout << "Enter your money: ";
+    cin >> money;
+    if (money < ticket->getPrice())
+    {
+        cout << "You entered a sufficient amount." << endl << endl << endl;
+        holdScreen();
+    }
+
+    else
+    {
+        if (!airSystem.buyTicket(flights[flightChoosen], ticket))
+        {
+            cout << "This flight is full" << endl << endl << endl;
+            holdScreen();
+
+        }
+        else 
+        {
+            cout << "Success, here is the information on your flight" << endl << endl;
+            printTicketInfo(ticket);
+            holdScreen();
+
+        }
+    }
+
 
 }
 
-void Menu::CheckAllflight()
+void Menu::printTicketInfo(Ticket* ticket)
+{
+    cout << ticket->getFlightName() << " " << ticket->getDeparture() << ticket->getArrival()  << endl;
+    cout << "Passenger: " << ticket->getName() << "    " << "DOB: " << ticket->getDOB() << "    " << "Seat: " << ticket->getSeatNumber() << endl;
+    cout << "Class: " << ticket->getType() << "    " << "Price: " << ticket->getPrice() << endl;
+}
+
+void Menu::CheckFlightFromMenu()
 {
 
-    string departureAirport, arrivalAirport;
+    string departureAirport;
     system("clear");
     cout << endl;
     cout << "==========================================================" << endl;
@@ -164,18 +261,20 @@ void Menu::CheckAllflight()
     cin >> departureAirport;
     vector<Flight*> flights = airSystem.getFlightsFromAirport(departureAirport);
     vector<Flight*>::iterator it;
-    if(flights.size() != 0){
-        cout << "There are " << flights.size() <<" flight from "<< departureAirport << endl;
+    cout << endl;
+    if (flights.size() != 0){
+        cout << "There are " << flights.size() <<" flights from "<< departureAirport << endl;
         for(it = flights.begin(); it != flights.end(); it++)
         {
             printFlightInfo(*it);
+            cout << endl;
         }
     }
     else
     {
         cout << "There is no flight from " << departureAirport << " airport" << endl;
     }
-    
+    cout << endl << endl << endl;
     holdScreen();
 }
 

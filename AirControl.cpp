@@ -8,6 +8,11 @@ using namespace std;
 #include <map>
 #include "AirControl.h"
 #include "Airport.h"
+#include "Ticket.h"
+#include "Business.h"
+#include "Economy.h"
+#include "FirstClass.h"
+
 #define POS_INF 10e7
 
 void AirControl::readAirports(string airportText)
@@ -29,7 +34,6 @@ void AirControl::readAirports(string airportText)
 }
 
 
-//TODO: fix readFlights() so that each airport is assigned with its flights.
 void AirControl::readFlights(string flightText)
 {
     string line;
@@ -213,6 +217,14 @@ vector<Flight*> AirControl::getFlightsFromAirport(string airportName)
     }
     return tempflight;
 }
+
+
+bool AirControl::buyTicket(Flight* flight,  Ticket* ticket)
+{
+
+    return flight->addTicket(ticket);
+}
+
 
 AirControl::~AirControl()
 {}

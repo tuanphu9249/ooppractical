@@ -4,17 +4,25 @@
 #include "Ticket.h"
 #define COEF 1; // coeffiecient for this flight type
 using namespace std;
-Economy::Economy(Flight* aFlight, string aName, string aDOB, string aSeatNumber) : Ticket(aFlight, aName, aDOB, aSeatNumber)
+Economy::Economy(string aFlightName, int aBasePrice) : Ticket(aFlightName, aBasePrice)
 {
-    flight = aFlight;
+    flightName = aFlightName;
+    type = "Economy";
+    price = aBasePrice*COEF;
+}
+
+
+Economy::Economy(string aFlightName, string aName, string aDOB, int aSeatNumber, int aBasePrice) : Ticket(aFlightName, aName, aDOB, aSeatNumber, aBasePrice)
+{
+    flightName = aFlightName;
     name = aName;
     DOB = aDOB;
     seatNumber = aSeatNumber;
     type = "Economy";
-    price = flight->getBasePrice()*COEF;
+    price = aBasePrice*COEF;
 }
 
 void Economy::setPrice()
 {
-    price = flight->getBasePrice()*COEF;
+    price = basePrice*COEF;
 }

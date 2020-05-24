@@ -4,17 +4,25 @@
 #include "Ticket.h"
 #define COEF 10; // coeffiecient for this flight type
 using namespace std;
-FirstClass::FirstClass(Flight* aFlight, string aName, string aDOB, string aSeatNumber) : Ticket(aFlight, aName, aDOB, aSeatNumber)
+
+FirstClass::FirstClass(string aFlightName, int aBasePrice) : Ticket(aFlightName, aBasePrice)
 {
-    flight = aFlight;
+    flightName = aFlightName;
+    type = "First Class";
+    price = aBasePrice*COEF;
+}
+
+FirstClass::FirstClass(string aFlightName, string aName, string aDOB, int aSeatNumber, int aBasePrice) : Ticket(aFlightName, aName, aDOB, aSeatNumber, aBasePrice)
+{
+    flightName = aFlightName;
     name = aName;
     DOB = aDOB;
     seatNumber = aSeatNumber;
     type = "First Class";
-    price = flight->getBasePrice()*COEF;
+    price = aBasePrice*COEF;
 }
 
 void FirstClass::setPrice()
 {
-    price = flight->getBasePrice()*COEF;
+    price = basePrice*COEF;
 }

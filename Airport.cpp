@@ -42,6 +42,7 @@ int Airport::getID()
     return ID; 
 }
 
+
 Flight* Airport::getFlights()
 {
     return flights;

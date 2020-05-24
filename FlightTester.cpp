@@ -40,9 +40,13 @@ int main()
     {
         Flight* flight = new Flight();
         for (int i = 0; i < 115; i++)
-            flight->addTicket(new Ticket(flight, "Anh Tuan Phu", "14/08/99", i ));
+            flight->addTicket(new Ticket(flight->getName(), "Anh Tuan Phu", "14/08/99", i, 30));
 
         Ticket* tickets = flight->getTickets();
+        for (int i = 0; i < 115; i++)
+        {
+            cout << tickets[i].getName() << " " << tickets[i].getFlightName() << endl;
+        }
 
         if (flight->getNumTicket() != 115)
             cout << "Error with Flight::addTicket()" << endl;
