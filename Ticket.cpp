@@ -7,7 +7,7 @@ Ticket::Ticket()
 {
 
 }
-Ticket::Ticket(Flight* aFlight, string aName, string aDOB, string aSeatNumber)
+Ticket::Ticket(Flight* aFlight, string aName, string aDOB, int aSeatNumber)
 {
     flight = aFlight;
     name = aName;
@@ -31,10 +31,16 @@ string Ticket::getDOB()
 {
     return DOB;
 }
-string Ticket::getSeatNumber()
+int Ticket::getSeatNumber()
 {
     return seatNumber;
 }        
+
+string Ticket::getType()
+{
+    return type;
+}
+
 int Ticket::getPrice()
 {
     return price;
@@ -52,9 +58,15 @@ void Ticket::setDOB(string aDOB)
 {
     DOB = aDOB;
 }
-void Ticket::setSeatNumber(string aSeatNumber)
+void Ticket::setSeatNumber(int aSeatNumber)
 {
     seatNumber = aSeatNumber;
+}
+
+void Ticket::setType(string aType)
+{  
+    type = aType;
+
 }
 
 
