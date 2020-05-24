@@ -51,7 +51,7 @@ void Menu::directFlightCheckMenu()
     cout << endl;
     vector<Flight*> flights = airSystem.directFlightCheck(departureAirport, arrivalAirport);
     if (flights.size() == 0) cout << "There is no direct flight available from "
-                                     << departureAirport << " to " << arrivalAirport << endl;
+                                    << departureAirport << " to " << arrivalAirport << endl;
     else
     {
         cout << "There are " << flights.size() << " flights available..." << endl << endl << endl;
@@ -66,12 +66,12 @@ void Menu::directFlightCheckMenu()
 
 }
 
-  
 
 void Menu::printFlightInfo(Flight* flight)
 {
     cout << flight->getName() << " " << " From: " << flight->getDeparture() << "     To: " << flight->getArrival() << endl;
     cout << "Duration: " << flight->getDuration() << "h" << endl; 
+    cout << "Cost : $" << flight-> getBasePrice() << endl;
 }
 
 void Menu::findCheapestFlightMenu()
@@ -94,7 +94,6 @@ void Menu::findCheapestFlightMenu()
     if (cheapeastCost == POS_INF)
     {
         cout << "There is currently no route from " << departureAirport << " to " << arrivalAirport;
-        return;
     }
 
     else
@@ -104,16 +103,26 @@ void Menu::findCheapestFlightMenu()
         vector<Airport*>::iterator iter;
         for (iter = route.end() - 1; iter >= route.begin(); iter--)
         {
-            if (iter != route.begin())
-                 cout << "->" << (*iter)->getName();
+            if (iter != route.end()-1)
+                cout << " -> " << (*iter)->getName();
             else
-                 cout << " " << (*iter)->getName();
+                cout << " " << (*iter)->getName();
 
         }
         cout << endl;
-
-        cout << "The cost for this route is $" << cheapeastCost << endl; 
-
+        cout << "The cost for this route is $" << cheapeastCost << endl << endl; 
+        vector<Airport*>::iterator iter1;
+        vector<Flight*>::iterator iter2;
+        for (iter1 = route.end() - 1; iter1 > route.begin(); iter1--)
+        {
+            cout << "***Available Flight from " << (*iter1)->getName() << " to " << (*(iter1-1))->getName() << "***"<< endl;
+            vector<Flight*> tempflight;
+            tempflight = airSystem.directFlightCheck((*iter1)->getName(),(*(iter1-1))->getName());
+            for(iter2 = tempflight.begin(); iter2 != tempflight.end(); iter2 ++){
+                printFlightInfo(*iter2);
+            }
+            cout << endl;
+        }
     }
     cout << endl << endl << endl;
 
