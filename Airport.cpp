@@ -3,17 +3,19 @@ using namespace std;
 #include "Airport.h"
 #include "Flight.h"
 
-int Airport::totalID = 0;
+
 Airport::Airport()
 {
     name = "";
-    ID = totalID++;
+    ID = Airport::totalID++;
     numFlights = 0;
     flights = new Flight[100];
-}
 
+}
+int Airport::totalID = 0;
 Airport::Airport(string aName)
 {
+    ID = Airport::totalID++;
     name = aName;
     numFlights = 0;
     flights = new Flight[100];

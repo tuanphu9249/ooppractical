@@ -12,10 +12,11 @@ class Airport
         string name;
         Flight* flights;
         int numFlights;
-        static int totalID;
         int ID;
 
     public:
+
+        static int totalID;
         Airport();
         Airport(string aName);
         void addFlight(Flight* aFlight);
