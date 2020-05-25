@@ -8,6 +8,11 @@ using namespace std;
 #include <map>
 #include "AirControl.h"
 #include "Airport.h"
+#include "Ticket.h"
+#include "Business.h"
+#include "Economy.h"
+#include "FirstClass.h"
+
 #define POS_INF 10e7
 
 void AirControl::readAirports(string airportText)
@@ -29,7 +34,6 @@ void AirControl::readAirports(string airportText)
 }
 
 
-//TODO: fix readFlights() so that each airport is assigned with its flights.
 void AirControl::readFlights(string flightText)
 {
     string line;
@@ -115,9 +119,19 @@ int AirControl::getNumAirports()
 
 vector<Flight*> AirControl::directFlightCheck(string departure, string arrival)
 {
+    vector<Flight*> result;
+    map<string,Airport*>::iterator it1 = airports.find(departure);
+    map<string,Airport*>::iterator it2 = airports.find(arrival); 
+    if(it1 == airports.end() || it2 == airports.end())
+    {
+        Flight* flight = new Flight();
+        result.push_back(flight);
+        cout << "!!INVALID DEPARTURE/ARRIVAL AIRPORT!!" << endl; 
+        return result;
+    }
     Airport* departureAirport = airports[departure];
     Flight* flightsFromDeparture = departureAirport->getFlights();
-    vector<Flight*> result;
+    
 
     for (int i = 0; i < departureAirport->getNumFlights(); i++)
     {   
@@ -159,6 +173,13 @@ void AirControl::Dijkstra(int a, vector<int>* weight, int* path)
 
 int AirControl::getCheapestRoutePrice(string departure,string arrival)
 {
+    map<string,Airport*>::iterator it1 = airports.find(departure);
+    map<string,Airport*>::iterator it2 = airports.find(arrival); 
+    if(it1 == airports.end() || it2 == airports.end())
+    {
+        cout << "!!INVALID DEPARTURE/ARRIVAL AIRPORT!!" << endl; 
+        return -1;
+    }
     int depid = airports[departure]->getID();
     int arrid = airports[arrival]->getID();
     vector<int> dist(55,POS_INF);
@@ -205,14 +226,30 @@ vector<Airport*> AirControl::cheapeastRoute(string departure, string arrival)
 
 vector<Flight*> AirControl::getFlightsFromAirport(string airportName)
 {
+    vector<Flight*> tempflight;
+    map<string,Airport*>::iterator it1 = airports.find(airportName);
+        if(it1 == airports.end())
+    {
+        Flight* flight = new Flight();
+        tempflight.push_back(flight);
+        cout << "!!INVALID AIRPORT!!" << endl; 
+        return tempflight;
+    }
     Airport* tempairprort = airports[airportName];
     Flight* temp = tempairprort->getFlights();
-    vector<Flight*> tempflight;
     for(int i = 0; i < tempairprort->getNumFlights(); i++){
         tempflight.push_back(temp+i);
     }
     return tempflight;
 }
+
+
+bool AirControl::buyTicket(Flight* flight,  Ticket* ticket)
+{
+
+    return flight->addTicket(ticket);
+}
+
 
 AirControl::~AirControl()
 {}

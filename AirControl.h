@@ -28,7 +28,7 @@ class AirControl
         vector<Flight*> directFlightCheck(string departure, string arrival); // check if there is a direct
                                                                             // flight between departure and arrival, return the actual flight
                                                                             // if no return null
-        bool buyTicket(string departure, string arrival, Ticket* ticket);    
+        bool buyTicket(Flight* flight, Ticket* ticket);    
 
         vector<Airport*> cheapeastRoute(string departure, string arrival);    // return the cheapeast route
                                                                         // between arrival and destination as an array of airports

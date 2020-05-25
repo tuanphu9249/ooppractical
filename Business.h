@@ -7,7 +7,8 @@ using namespace std;
 class Business : public Ticket
 {
     public:
-        Business(Flight* aFlight, string aName, string aDOB, string aSeatNumber);
+        Business(string aFlightName, int aBasePrice);
+        Business(string aFlightName, string aName, string aDOB, int aSeatNumber, int aBasePrice);
         virtual void setPrice();
 
 };

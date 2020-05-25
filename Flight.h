@@ -1,11 +1,10 @@
 #ifndef FLIGHT_H
 #define FLIGHT_H
-#define FIRST_MAX 5;
-#define BUSINESS_MAX 10;
-#define ECO_MAX 100;
+
 #include <iostream>
 #include <ctime>
 using namespace std;
+#include "Ticket.h"
 
 class Airport;  // foward declarations to avoid dependency loop
 
@@ -16,6 +15,7 @@ class Flight
         string arrival;   // arrival airport
         string flightName; // VJ-696
         
+        Ticket* tickets; 
         int duration;
         int basePrice;
         int flightID;        // ID of flight
@@ -23,11 +23,13 @@ class Flight
         int curBusinessSeat;
         int curEcoSeat;
         int curFirstSeat;
+        int numTicket;
 
     public: 
         Flight();
         Flight(string aName, string aDeparture, string aArrival, int aBasePrice, int aDuration);
 
+        bool addTicket(Ticket* aTicket);
         string getName();        
         string getDeparture();
         string getArrival();
@@ -37,7 +39,10 @@ class Flight
         int getCurEcoSeat();
         int getCurFirstSeat();  
         int getBasePrice(); 
+        bool isAvailable();
+        int getNumTicket();
 
+        Ticket* getTickets();
         void setName(string aName);
         void setDuration(int aDuration);
         void setDeparture(string aDeparture);

@@ -1,32 +1,41 @@
 #ifndef TICKET_H
 #define TICKET_H
-#include "Flight.h"
 #include <iostream>
 using namespace std;
 
 class Ticket
 {
     protected:
-        Flight* flight;
+        string flightName;
+        string arrival;
+        string departure;
         string name;
+        int basePrice;
         string DOB;
-        string seatNumber;
+        int seatNumber;
         string type;
         int price;
     public:
         Ticket();
-        Ticket(Flight* aFlight, string aName, string aDOB, string aSeatNumber);
+        Ticket(string aFlightName, int aBasePrice);
+        Ticket(string aFlightName, string aName, string aDOB, int aSeatNumber, int aBasePrice);
         int getPrice();
         virtual void setPrice();
-        Flight* getFlight();
+        string getFlightName();
+        string getArrival();
+        string getDeparture();
         string getName();
+        string getType();
         string getDOB();
-        string getSeatNumber();        
+        int getSeatNumber();        
 
-        void setFlight(Flight* aFlight);
+        void setFlightName(string aFlightName);
+        void setArrival(string aArrival);
+        void setDeparture(string aDeparture);
         void setName(string aName);
         void setDOB(string aDOB);
-        void setSeatNumber(string aSeatNumber);
+        void setType (string aType);
+        void setSeatNumber(int aSeatNumber);
         
 
         ~Ticket();

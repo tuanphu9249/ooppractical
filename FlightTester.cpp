@@ -2,11 +2,12 @@
 using namespace std;
 #include "Flight.h"
 #include "Airport.h"
+#include "Ticket.h"
 #include <vector>
 
 int main()
 {
-    // unit testing
+    //  unit testing
     {
         vector<Flight*> gate1; 
         vector<Flight*>::iterator it;
@@ -34,6 +35,30 @@ int main()
         flight3->setCurEcoSeat(5);
         cout << flight3->getCurBusinessSeat() << " " << flight3->getCurEcoSeat() <<endl;
 
+    }
+
+    {
+        Flight* flight = new Flight();
+        for (int i = 0; i < 115; i++)
+            flight->addTicket(new Ticket(flight->getName(), "Anh Tuan Phu", "14/08/99", i, 30));
+
+        Ticket* tickets = flight->getTickets();
+        for (int i = 0; i < 115; i++)
+        {
+            cout << tickets[i].getName() << " " << tickets[i].getFlightName() << endl;
+        }
+
+        if (flight->getNumTicket() != 115)
+            cout << "Error with Flight::addTicket()" << endl;
+
+
+        if (flight->addTicket(new Ticket()))
+            cout << "Ticket still adding although limit is exceeded" << endl;
+        else cout <<"Flight::addTicket() no error" << endl;
+            
+            
+
+        
     }   
     
 }
