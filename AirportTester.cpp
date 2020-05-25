@@ -33,7 +33,6 @@ int main()
 
         adelaide->addFlight(flight1);
         adelaide->addFlight(flight2);
-
         if (adelaide->getNumFlights() != 2)
         {
             cout << "An error occurred with Airport::getNumFlights()" << endl;
@@ -47,13 +46,13 @@ int main()
     // testing Airport::getFlights();
     {
         Airport* adelaide = new Airport("Adelaide");
+        Airport* melboune = new Airport("Meb");
         Flight* flight1 = new Flight();
         Flight* flight2 = new Flight();
         Flight* flight3 = new Flight();
         adelaide->addFlight(flight1);
         adelaide->addFlight(flight2);
         adelaide->addFlight(flight3);
-
         for (int i = 0; i < 3; i++)
         {
             if (adelaide->getFlights()[i].getName() != "") 
