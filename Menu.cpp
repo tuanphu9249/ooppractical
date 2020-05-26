@@ -11,10 +11,10 @@ using namespace std;
 #include "Economy.h"
 #include "FirstClass.h"
 #include <vector>
-#define FIRST_MAX 5
+#define FIRST_MAX 1
 #define BUSINESS_MAX 10
 #define ECO_MAX 100
-#define MAX_TICKET 115
+#define MAX_TICKET 111
 #define POS_INF 10e7
 
 
@@ -215,22 +215,24 @@ void Menu::buyTicketMenu()
     int priceCoef;
     Ticket* ticket;
     Flight* tempflight = flights[flightChoosen];
+    int curBusinessSeat, curFirstSeat, curEcoSeat;
     switch(type)
     {
-        case 1:
-            int curBusinessSeat = tempflight->getCurBusinessSeat();
+        case (1):
+            curBusinessSeat = tempflight->getCurBusinessSeat();
             if (curBusinessSeat >= BUSINESS_MAX)
             {
                 cout << "Business ticket is full" << endl;
                 holdScreen();
                 return;
             }
+
             ticket = new Business(tempflight->getName(), name, DOB, curBusinessSeat, tempflight->getBasePrice());
             priceCoef = 2;
 
             break;
-        case 2:
-            int curFirstSeat = tempflight->getCurFirstSeat();
+        case (2):
+            curFirstSeat = tempflight->getCurFirstSeat();
             if (curFirstSeat >= FIRST_MAX)
             {
                 cout << "First Class ticket is full" << endl;
@@ -240,8 +242,8 @@ void Menu::buyTicketMenu()
             ticket = new FirstClass(tempflight->getName(), name, DOB, curFirstSeat, tempflight->getBasePrice());
             priceCoef = 3;
             break;
-        case 3:
-            int curEcoSeat = tempflight->getCurEcoSeat();
+        case (3):
+            curEcoSeat = tempflight->getCurEcoSeat();
             if (curEcoSeat >= ECO_MAX)
             {
                 cout << "Economy ticket is full" << endl;
