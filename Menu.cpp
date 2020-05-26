@@ -207,7 +207,7 @@ void Menu::buyTicketMenu()
     getline(cin, name);
     cout << "Date of Birth: ";
     cin >> DOB;
-    cout << "Flight type:    1. Business     2. First Class     3. Economy" << endl;
+    cout << "Flight type:    1. Business      2. First Class     3. Economy" << endl;
     cout << "Enter your choice: ";
 
     cin >> type;
@@ -217,17 +217,38 @@ void Menu::buyTicketMenu()
     Flight* tempflight = flights[flightChoosen];
     switch(type)
     {
-        case (1):
-            ticket = new Business(tempflight->getName(), name, DOB, tempflight->getCurBusinessSeat(), tempflight->getBasePrice());
+        case 1:
+            int curBusinessSeat = tempflight->getCurBusinessSeat();
+            if (curBusinessSeat >= BUSINESS_MAX)
+            {
+                cout << "Business ticket is full" << endl;
+                holdScreen();
+                return;
+            }
+            ticket = new Business(tempflight->getName(), name, DOB, curBusinessSeat, tempflight->getBasePrice());
             priceCoef = 2;
 
             break;
-        case (2):
-            ticket = new FirstClass(tempflight->getName(), name, DOB, tempflight->getCurFirstSeat(), tempflight->getBasePrice());
+        case 2:
+            int curFirstSeat = tempflight->getCurFirstSeat();
+            if (curFirstSeat >= FIRST_MAX)
+            {
+                cout << "First Class ticket is full" << endl;
+                holdScreen();
+                return;
+            }
+            ticket = new FirstClass(tempflight->getName(), name, DOB, curFirstSeat, tempflight->getBasePrice());
             priceCoef = 3;
             break;
-        case (3):
-            ticket = new Economy(tempflight->getName(), name, DOB, tempflight->getCurEcoSeat(), tempflight->getBasePrice());
+        case 3:
+            int curEcoSeat = tempflight->getCurEcoSeat();
+            if (curEcoSeat >= ECO_MAX)
+            {
+                cout << "Economy ticket is full" << endl;
+                holdScreen();
+                return;
+            }
+            ticket = new Economy(tempflight->getName(), name, DOB, curEcoSeat, tempflight->getBasePrice());
             priceCoef = 1;
             break;
         default:
@@ -245,7 +266,7 @@ void Menu::buyTicketMenu()
     cin >> money;
     if (money < ticket->getPrice())
     {
-        cout << "You entered a sufficient amount." << endl << endl << endl;
+        cout << "You entered a insufficient amount." << endl << endl << endl;
         holdScreen();
     }
 
