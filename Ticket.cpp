@@ -22,9 +22,9 @@ Ticket::Ticket(string aFlightName, string aName, string aDOB, int aSeatNumber, i
     basePrice = aBasePrice;
 
 }
-void Ticket::setPrice()
+void Ticket::setPrice(int coef)
 {
-    price = basePrice;
+    price = basePrice * coef;
 }
 string Ticket::getFlightName()
 {

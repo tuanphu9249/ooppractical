@@ -211,28 +211,32 @@ void Menu::buyTicketMenu()
     cout << "Enter your choice: ";
 
     cin >> type;
-
+    
+    int priceCoef;
     Ticket* ticket;
     Flight* tempflight = flights[flightChoosen];
     switch(type)
     {
         case (1):
-            tempflight->setCurBusinessSeat(tempflight->getCurBusinessSeat()+1);
             ticket = new Business(tempflight->getName(), name, DOB, tempflight->getCurBusinessSeat(), tempflight->getBasePrice());
+            priceCoef = 2;
+
             break;
         case (2):
-            tempflight->setCurFirstSeat(tempflight->getCurFirstSeat()+1);
             ticket = new FirstClass(tempflight->getName(), name, DOB, tempflight->getCurFirstSeat(), tempflight->getBasePrice());
+            priceCoef = 3;
             break;
         case (3):
-            tempflight->setCurEcoSeat(tempflight->getCurEcoSeat()+1);
             ticket = new Economy(tempflight->getName(), name, DOB, tempflight->getCurEcoSeat(), tempflight->getBasePrice());
+            priceCoef = 1;
             break;
         default:
             cout << "Sorry, something went wrong" << endl << endl;
             holdScreen(); 
             return;
     }
+
+    ticket->setPrice(priceCoef);
 
     int money;
 
@@ -255,6 +259,22 @@ void Menu::buyTicketMenu()
         }
         else 
         {
+            switch(type)
+        {
+            case (1):
+                tempflight->setCurBusinessSeat(tempflight->getCurBusinessSeat() + 1);
+                break;
+            case (2):
+                tempflight->setCurFirstSeat(tempflight->getCurFirstSeat() + 1);
+                break;
+            case (3):
+                tempflight->setCurEcoSeat(tempflight->getCurEcoSeat() + 1);
+            
+                break;
+            default:
+                break;
+        }
+
             cout << "Success, here is the information on your flight" << endl << endl;
             printTicketInfo(ticket);
             holdScreen();

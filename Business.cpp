@@ -2,7 +2,6 @@
 #include "Business.h"
 #include "Flight.h"
 #include "Ticket.h"
-#define COEF 5; // coeffiecient for this flight type
 
 
 using namespace std;
@@ -10,7 +9,6 @@ Business::Business(string aFlightName, int aBasePrice) : Ticket(aFlightName, aBa
 {
     flightName = aFlightName;
     type = "Business";
-    price = aBasePrice*COEF;
 }
 
 
@@ -21,10 +19,9 @@ Business::Business(string aFlightName, string aName, string aDOB, int aSeatNumbe
     DOB = aDOB;
     seatNumber = aSeatNumber;
     type = "Business";
-    price = aBasePrice*COEF;
 }
 
-void Business::setPrice()
+void Business::setPrice(int coef)
 {
-    price = basePrice*COEF;
+    price = basePrice*coef;
 }

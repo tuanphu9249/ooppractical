@@ -9,7 +9,7 @@ class Business : public Ticket
     public:
         Business(string aFlightName, int aBasePrice);
         Business(string aFlightName, string aName, string aDOB, int aSeatNumber, int aBasePrice);
-        virtual void setPrice();
+        virtual void setPrice(int coef);
 
 };
 #endif

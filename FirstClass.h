@@ -9,7 +9,7 @@ class FirstClass : public Ticket
     public:
         FirstClass(string aFlightName, int aBasePrice);
         FirstClass(string aFlightName, string aName, string aDOB, int aSeatNumber, int aBasePrice);
-        virtual void setPrice();
+        virtual void setPrice(int coef);
 };
 
 #endif

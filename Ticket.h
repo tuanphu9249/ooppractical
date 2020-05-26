@@ -20,7 +20,7 @@ class Ticket
         Ticket(string aFlightName, int aBasePrice);
         Ticket(string aFlightName, string aName, string aDOB, int aSeatNumber, int aBasePrice);
         int getPrice();
-        virtual void setPrice();
+        virtual void setPrice(int coef);
         string getFlightName();
         string getArrival();
         string getDeparture();
