@@ -37,4 +37,4 @@ AirControlTester.o: AirControlTester.cpp AirControl.h Flight.h Ticket.h Airport.
 TicketTester.o: TicketTester.cpp Ticket.h FirstClass.h Business.h Economy.h Flight.h
 	g++ -c TicketTester.cpp -o TicketTester.o
 clean:
-	rm -f *.o main AirportTester FlightTester
+	rm -f *.o main AirportTester FlightTester AirControlTester TicketTester
