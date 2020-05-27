@@ -9,7 +9,7 @@ class Economy : public Ticket
     public:
         Economy(string aFlightName, int aBasePrice);
         Economy(string aFlightName, string aName, string aDOB, int aSeatNumber, int basePrice);
-        virtual void setPrice(int coef);
+        virtual void setPrice();
 
 };
 

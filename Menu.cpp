@@ -212,7 +212,6 @@ void Menu::buyTicketMenu()
 
     cin >> type;
     
-    int priceCoef;
     Ticket* ticket;
     Flight* tempflight = flights[flightChoosen];
     int curBusinessSeat, curFirstSeat, curEcoSeat;
@@ -228,7 +227,6 @@ void Menu::buyTicketMenu()
             }
 
             ticket = new Business(tempflight->getName(), name, DOB, curBusinessSeat, tempflight->getBasePrice());
-            priceCoef = 2;
 
             break;
         case (2):
@@ -240,7 +238,6 @@ void Menu::buyTicketMenu()
                 return;
             }
             ticket = new FirstClass(tempflight->getName(), name, DOB, curFirstSeat, tempflight->getBasePrice());
-            priceCoef = 3;
             break;
         case (3):
             curEcoSeat = tempflight->getCurEcoSeat();
@@ -251,7 +248,6 @@ void Menu::buyTicketMenu()
                 return;
             }
             ticket = new Economy(tempflight->getName(), name, DOB, curEcoSeat, tempflight->getBasePrice());
-            priceCoef = 1;
             break;
         default:
             cout << "Sorry, something went wrong" << endl << endl;
@@ -259,7 +255,7 @@ void Menu::buyTicketMenu()
             return;
     }
 
-    ticket->setPrice(priceCoef);
+    ticket->setPrice();
 
     int money;
 

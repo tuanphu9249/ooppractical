@@ -2,6 +2,7 @@
 #include "FirstClass.h"
 #include "Flight.h"
 #include "Ticket.h"
+#define coef 100
 using namespace std;
 
 FirstClass::FirstClass(string aFlightName, int aBasePrice) : Ticket(aFlightName, aBasePrice)
@@ -19,7 +20,7 @@ FirstClass::FirstClass(string aFlightName, string aName, string aDOB, int aSeatN
     type = "First Class";
 }
 
-void FirstClass::setPrice(int coef)
+void FirstClass::setPrice()
 {
     price = basePrice*coef;
 }

@@ -18,6 +18,9 @@ int main()
         Economy* ticket1 = new Economy(flight1->getName(),"Antoine","17/11/1999",11, 1);
         Business* business = new Business(flight1->getName(),"AndrewNgo","11/11/1999", 19, 1);
         FirstClass* firstclass = new FirstClass(flight1->getName(),"Long Nguyen","12/12/1999",22, 1);
+        ticket1->setPrice();
+        firstclass->setPrice();
+        business->setPrice();
         
         cout << "Base price:" << flight1->getBasePrice() << endl;
         cout << "First Class customer:"<< firstclass->getName() <<", DOB: "<< firstclass->getDOB()<< ", seat number: "<< firstclass->getSeatNumber() << endl;
