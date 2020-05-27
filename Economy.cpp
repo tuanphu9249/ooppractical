@@ -2,6 +2,7 @@
 #include "Economy.h"
 #include "Flight.h"
 #include "Ticket.h"
+#define coef 1
 using namespace std;
 Economy::Economy(string aFlightName, int aBasePrice) : Ticket(aFlightName, aBasePrice)
 {
@@ -19,7 +20,7 @@ Economy::Economy(string aFlightName, string aName, string aDOB, int aSeatNumber,
     type = "Economy";
 }
 
-void Economy::setPrice(int coef)
+void Economy::setPrice()
 {
     price = basePrice*coef;
 }
