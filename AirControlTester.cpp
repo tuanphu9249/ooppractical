@@ -54,7 +54,7 @@ int main(int argc, char *argv[])        // argv[1] holds airports.txt, argv[2] h
 
         AirControl airSystem = AirControl(argv[1], argv[2]);
 
-        vector<Flight*> testFlight = airSystem.directFlightCheck("Adelaide", "Melbourne");
+        vector<Flight*> testFlight = airSystem.directFlightCheck("ADELAIDE", "MELBOURNE");
         if (!testFlight.empty())
         {
             cout << "Departure: " << testFlight.front()->getDeparture() << endl;
