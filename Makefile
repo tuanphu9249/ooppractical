@@ -35,4 +35,4 @@ AirportTester.o: AirportTester.cpp Airport.h Flight.h Ticket.h
 FlightTester.o: FlightTester.cpp Airport.h Flight.h Ticket.h
 	g++ -c FlightTester.cpp -o FlightTester.o
 clean:
-	rm -f *.o main
+	rm -f *.o main AirportTester FlightTester
