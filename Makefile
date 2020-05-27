@@ -16,7 +16,7 @@ AirControl.o: AirControl.cpp AirControl.h Airport.h Ticket.h Business.h Economy.
 Airport.o: Airport.cpp Airport.h Flight.h
 	g++ -c Airport.cpp -o Airport.o
 Ticket.o: Ticket.cpp Ticket.h Flight.h
-	g++ -c Ticket.cpp -o Ticket.oes
+	g++ -c Ticket.cpp -o Ticket.o
 Menu.o: Menu.cpp Menu.h AirControl.h Flight.h Airport.h Ticket.h Business.h Economy.h FirstClass.h
 	g++ -c Menu.cpp -o Menu.o
 main.o: main.cpp AirControl.h Airport.h Ticket.h Flight.h Menu.h
@@ -27,8 +27,4 @@ AirportTester.o: AirportTester.cpp Airport.h Flight.h Ticket.h
 FlightTester.o: FlightTester.cpp Airport.h Flight.h Ticket.h
 	g++ -c FlightTester.cpp -o FlightTester.o
 clean:
-<<<<<<< HEAD
 	rm -f *.o main AirportTester FlightTester
-=======
-	rm -f *.o main AirportTester FlightTester
->>>>>>> 0e1636459c633b54ba2ee724a2fca80cbfadfaca
