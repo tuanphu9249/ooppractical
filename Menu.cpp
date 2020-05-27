@@ -286,13 +286,15 @@ void Menu::buyTicketMenu()
         {
             case (1):
                 tempflight->setCurBusinessSeat(tempflight->getCurBusinessSeat() + 1);
+                ticket->setSeatNumber(tempflight->getCurBusinessSeat());
                 break;
             case (2):
                 tempflight->setCurFirstSeat(tempflight->getCurFirstSeat() + 1);
+                ticket->setSeatNumber(tempflight->getCurFirstSeat());
                 break;
             case (3):
                 tempflight->setCurEcoSeat(tempflight->getCurEcoSeat() + 1);
-            
+                ticket->setSeatNumber(tempflight->getCurEcoSeat());
                 break;
             default:
                 break;
@@ -309,7 +311,7 @@ void Menu::buyTicketMenu()
 }
 
 void Menu::printTicketInfo(Ticket* ticket)
-{
+{   
     cout << ticket->getFlightName() << " " << ticket->getDeparture() << ticket->getArrival()  << endl;
     cout << "Passenger: " << ticket->getName() << "    " << "DOB: " << ticket->getDOB() << "    " << "Seat: " << ticket->getType()[0] <<  ticket->getSeatNumber() << endl;
     cout << "Class: " << ticket->getType() << "    " << "Price: $" << ticket->getPrice() << endl;
