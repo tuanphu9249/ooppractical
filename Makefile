@@ -5,6 +5,10 @@
 # default target is all
 all: main
 
+AirportTester: AirportTester.o Airport.o Flight.o Ticket.o
+	g++ AirportTester.o Airport.o Flight.o Ticket.o -o AirportTester
+FlightTester: FlightTester.o Airport.o Flight.o Ticket.o
+	g++ FlightTester.o Airport.o Flight.o Ticket.o -o FlightTester
 main: AirControl.o Airport.o Ticket.o Business.o Economy.o FirstClass.o Flight.o Menu.o main.o
 	g++ AirControl.o Airport.o Ticket.o Business.o Economy.o FirstClass.o Flight.o Menu.o main.o -o main
 AirControl.o: AirControl.cpp AirControl.h Airport.h Ticket.h Business.h Economy.h FirstClass.h
@@ -26,5 +30,9 @@ Menu.o: Menu.cpp Menu.h AirControl.h Flight.h Airport.h Ticket.h Business.h Econ
 main.o: main.cpp AirControl.h Airport.h Ticket.h Flight.h Menu.h
 	g++ -c main.cpp -o main.o
 # remove all object files and the compiled executable
+AirportTester.o: AirportTester.cpp Airport.h Flight.h Ticket.h
+	g++ -c AirportTester.cpp -o AirportTester.o
+FlightTester.o: FlightTester.cpp Airport.h Flight.h Ticket.h
+	g++ -c FlightTester.cpp -o FlightTester.o
 clean:
 	rm -f *.o main
