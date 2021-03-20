@@ -1,6 +1,8 @@
 #ifndef AIRPORT_H
 #define AIRPORT_H
 #include <iostream>
+#include "Flight.h"
+
 using namespace std;
 
 
@@ -8,20 +10,29 @@ class Airport
 {
     private:
         string name;
-        FlightType[] flights;
+        Flight* flights;
         int numFlights;
+        int ID;
 
     public:
-        Airport(string name);
-        void addFlight(string departure, string arrival);
-        void setName(string name);
+
+        static int totalID;
+        Airport();
+        Airport(string aName);
+        void addFlight(Flight* aFlight);
+        void setName(string aName);
+        void setID(int aID);
 
         string getName();
-        string* getFlights();
+        Flight* getFlights();
         int getNumFlights();
+        int getID();
+
 
         ~Airport();
 
 
 
-}
+};
+
+#endif

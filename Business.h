@@ -2,13 +2,14 @@
 #define BUSINESS_H
 #include <iostream>
 using namespace std;
-#include "FlightType.h"
-
-class Business : public FlightType
+#include "Ticket.h"
+#include "Flight.h"
+class Business : public Ticket
 {
     public:
-        virtual int priceCalculation(Airport departure, Airport arrival);
-        virtual int speedCalculation(Airport departure, Airport arrival);
+        Business(string aFlightName, int aBasePrice);
+        Business(string aFlightName, string aName, string aDOB, int aSeatNumber, int aBasePrice);
+        virtual void setPrice();
 
-
-}
+};
+#endif
